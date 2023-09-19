@@ -11,4 +11,7 @@ public interface BoardMapper {
 
 	List<BoardDto> selectBoardList() throws Exception;
 	public void insertBoard(BoardDto boardDto) throws Exception;
+	public void updateHitCount(int boardIdx) throws Exception;
+	BoardDto selectBoardDetail(int boardIdx) throws Exception;
+	
 }

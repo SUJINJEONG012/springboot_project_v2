@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.mybatis.dto.BoardDto;
@@ -37,6 +38,16 @@ public class BoardController {
 	public String insertBoard(BoardDto boardDto) throws Exception {
 		boardService.insertBoard(boardDto);
 		return "redirect:/board/list";
+	}
+	
+	// 글 상세 내용
+	@RequestMapping("/boarddetail")
+	public ModelAndView boardDetail(@RequestParam int boardIdx) {
+		ModelAndView mv = new ModelAndView("/board/boarddetail");
+		
+		BoardDto boardDto = boardService.selectBoardDetail(boardIdx);
+		mv.addObject("board", boardDto);
+		return mv;
 	}
 	
 	

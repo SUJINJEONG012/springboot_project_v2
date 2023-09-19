@@ -13,5 +13,6 @@ public interface BoardService {
 	public void insertBoard(BoardDto boardDto) throws Exception;
 	
 	// 게시글 조회, 게시글 조회수 증가
+	BoardDto selectBoardDetail(int boardIdx) throws Exception;
 	
 }

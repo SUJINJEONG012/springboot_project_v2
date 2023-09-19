@@ -24,5 +24,25 @@
 	(#{title},#{contents}, now(), 'admin')
 
 	</insert>
+	
+	<!-- 조회수 증가, 게시글 상세 내용 조회  -->
+	<update id="updateHitCount" parameterType="int">
+		update
+		t_board
+		set
+		hit_cnt = hit_cnt + 1
+		where
+		 board_idx = #{boardIdx}
+	</update>
+	
+	<select id="selectBoardDetail" parameterType="int" resultType="com.boot.mybatis.dto.BoardDto">
+		select 
+		board_idx, title, contents, hit_cnt,
+		created_datetime, created_id
+		from
+		t_board
+		where
+		board_idx = ${boardIdx} AND deleted_yn = 'N'
+	</select>
 
 </mapper>
