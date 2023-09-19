@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div class="container">
+	<h2>게시글 상세 화면</h2>
+	<table>
+		<colgroup>
+		 <col width="15%"/>
+		 <col width="15%"/>
+		 <col width="15%"/>
+		 <col width="15%"/> 
+		</colgroup>
+		<caption>게시글 상세 내용</caption>
+		<tbody>
+			<tr>
+				<th scope="row">긃 번호</th>
+				<td th:text="${boardDto.boardIdx}"></td>
+				<th scope="row">조회수</th>
+				<td th:text="${boardDto.hitCnt}"></td>
+			</tr>
+			
+			<tr>
+				<th>작성자</th>
+				<td th:text="${boardDto.createdId}"></td>
+				<th>작성일</th>
+				<td th:text="${#temporals.format(boardDto.createdDateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+			</tr>
+			
+			<tr>
+				<th scope="row">제목</th>
+				<td colspan="3">
+					<input type="text" id="title" name="title" th:value="${boardDto.title}">
+				</td>
+			</tr>
+			
+			<tr>
+				<th scope="row">
+					<textarea title="내용" id="contents" name="contents" th:text="${boardDto.contents}"></textarea>
+				</th>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
