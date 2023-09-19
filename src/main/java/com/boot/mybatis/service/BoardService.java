@@ -14,5 +14,5 @@ public interface BoardService {
 	
 	// 게시글 조회, 게시글 조회수 증가
 	BoardDto selectBoardDetail(int boardIdx) throws Exception;
-	
+			
 }

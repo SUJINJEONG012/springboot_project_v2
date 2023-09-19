@@ -41,8 +41,8 @@ public class BoardController {
 	}
 	
 	// 글 상세 내용
-	@RequestMapping("/boarddetail")
-	public ModelAndView boardDetail(@RequestParam int boardIdx) {
+	@GetMapping("/boarddetail")
+	public ModelAndView boardDetail(@RequestParam int boardIdx) throws Exception{
 		ModelAndView mv = new ModelAndView("/board/boarddetail");
 		
 		BoardDto boardDto = boardService.selectBoardDetail(boardIdx);
