@@ -11,15 +11,16 @@ import com.boot.mybatis.dto.BoardDto;
 import com.boot.mybatis.service.BoardService;
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
 	
-	@RequestMapping("/board/openBoardList")
+	@RequestMapping("/list")
 	public ModelAndView openBoardList() throws Exception{
 		
-		ModelAndView mv = new ModelAndView("/board/boardList");
+		ModelAndView mv = new ModelAndView("/board/boardlist");
 		
 		List<BoardDto> list = boardService.selectBoardList();
 		mv.addObject("list", list);
