@@ -46,7 +46,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView("/board/boarddetail");
 		
 		BoardDto boardDto = boardService.selectBoardDetail(boardIdx);
-		mv.addObject("board", boardDto);
+		mv.addObject("boardDto", boardDto);
 		return mv;
 	}
 	

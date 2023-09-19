@@ -42,7 +42,7 @@
 		from
 		t_board
 		where
-		board_idx = ${boardIdx} AND deleted_yn = 'N'
+		board_idx = #{boardIdx} AND deleted_yn = 'N'
 	</select>
 
 </mapper>
