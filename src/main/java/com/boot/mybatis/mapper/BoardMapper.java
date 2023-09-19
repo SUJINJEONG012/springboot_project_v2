@@ -10,4 +10,5 @@ import com.boot.mybatis.dto.BoardDto;
 public interface BoardMapper {
 
 	List<BoardDto> selectBoardList() throws Exception;
+	public void insertBoard(BoardDto boardDto) throws Exception;
 }

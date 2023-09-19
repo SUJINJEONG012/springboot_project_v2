@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,13 +22,23 @@ public class BoardController {
 	@RequestMapping("/list")
 	public ModelAndView openBoardList() throws Exception{
 		
-		ModelAndView mv = new ModelAndView("/board/boardlist");
-		
+		ModelAndView mv = new ModelAndView("/board/boardlist");		
 		List<BoardDto> list = boardService.selectBoardList();
 		mv.addObject("list", list);
-		
-		return mv;
-		
-	} 
+		return mv;	
+	}
+	
+	@GetMapping("/write")
+	public String boardWrite() throws Exception{
+		return "/board/boardwrite";
+	}
+	
+	@PostMapping("/insertboard")
+	public String insertBoard(BoardDto boardDto) throws Exception {
+		boardService.insertBoard(boardDto);
+		return "redirect:/board/list";
+	}
+	
+	
 	
 }

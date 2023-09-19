@@ -11,7 +11,7 @@ public class BoardDto {
 	private String title;
 	private String contents;
 	private int hitCnt;
-	private String creatorId;
+	private String createdId;
 	private LocalDateTime createdDateTime;
 	private String updaterId;
 	private LocalDateTime updatedDateTime;
