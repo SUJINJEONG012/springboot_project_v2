@@ -40,7 +40,7 @@
 		board_idx, title, contents, hit_cnt,
 		created_datetime, created_id
 		from
-		t_board
+		t_board 
 		where
 		board_idx = #{boardIdx} AND deleted_yn = 'N'
 	</select>
