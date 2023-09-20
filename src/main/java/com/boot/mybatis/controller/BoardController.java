@@ -51,14 +51,16 @@ public class BoardController {
 	}
 	
 	// 게시판 수정하기
-	@PostMapping("/updateboard")
+	@RequestMapping("/updateboard")
 	public String updateBoard(BoardDto boardDto) throws Exception {
 		boardService.updateBoard(boardDto);
 		return "redirect:/board/boardlist";
 	}
 	
 	// 게시판 삭제하기
-	public String deleteBaord() {
-		
+	@RequestMapping("/deleteBoard")
+	public String deleteBoard(int boardIdx) throws Exception {
+		boardService.deleteBoard(boardIdx);
+		return "redirect:/board/boardlist";
 	}
 }

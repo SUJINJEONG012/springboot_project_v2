@@ -56,27 +56,50 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
-	<script type="text/javascript">
-		
-	
+	<!--<script type="text/javascript">
+
 		document.querySelector("#list").addEventListener("click", function(){
 			alert("dd");
 			location.href="list";			
 		});
 		
 		document.querySelector("#edit").addEventListener("click", function(){
-			let frm = document.selector('#frm')[0];
+			
+			let frm = document.querySelector('#frm');
+			alert("수정");
 			frm.action = "updateboard";
 			frm.submit();			
 		});
 		
 		document.querySelector("#delete").addEventListener("click", function(){
-			let frm = document.selector('#frm')[0];
+			alert("삭제");
+			let frm = document.querySelector('#frm');
 			frm.action = "deleteboard";
 			frm.submit();			
 		});
 		
 	</script>
+	-->
+	 <script type="text/javascript">
+            $(document).ready(function(){
+                $("#list").on("click", function(){
+                    location.href = "list";
+                });
+
+                $("#edit").on("click", function(){
+                    var frm = $("#frm")[0];
+                    frm.action = "updateboard";
+                    frm.submit();
+                });
+
+                $("#delete").on("click", function(){
+                    var frm = $("#frm")[0];
+                    frm.action = "deleteboard";
+                    frm.submit();
+                });
+            })
+        </script>
+        <!-- ADD END -->
 </div>
 
 </body>

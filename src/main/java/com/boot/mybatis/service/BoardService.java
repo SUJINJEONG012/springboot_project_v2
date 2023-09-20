@@ -18,5 +18,7 @@ public interface BoardService {
 	// 게시글 수정
 	public void updateBoard(BoardDto boardDto) throws Exception;
 
-	public void  deleteBoard(int boardIdx) throws Exception;
+	public void deleteBoard(int boardIdx) throws Exception;
+	
+	
 }
