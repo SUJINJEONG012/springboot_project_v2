@@ -50,6 +50,15 @@ public class BoardController {
 		return mv;
 	}
 	
+	// 게시판 수정하기
+	@PostMapping("/updateboard")
+	public String updateBoard(BoardDto boardDto) throws Exception {
+		boardService.updateBoard(boardDto);
+		return "redirect:/board/boardlist";
+	}
 	
-	
+	// 게시판 삭제하기
+	public String deleteBaord() {
+		
+	}
 }
