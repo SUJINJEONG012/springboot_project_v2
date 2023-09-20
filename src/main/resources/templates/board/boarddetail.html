@@ -9,7 +9,8 @@
 
 <div class="container">
 	<h2>게시글 상세 화면</h2>
-	<table>
+	<form id="frm" method="post">
+	<table class="board_detail">
 		<colgroup>
 		 <col width="15%"/>
 		 <col width="15%"/>
@@ -19,7 +20,7 @@
 		<caption>게시글 상세 내용</caption>
 		<tbody>
 			<tr>
-				<th scope="row">긃 번호</th>
+				<th scope="row">글 번호</th>
 				<td th:text="${boardDto.boardIdx}"></td>
 				<th scope="row">조회수</th>
 				<td th:text="${boardDto.hitCnt}"></td>
@@ -47,6 +48,35 @@
 			
 		</tbody>
 	</table>
+	</form>
+	
+	<input type="button" id="list" value="목록"/>
+	<input type="button" id="edit" value="수정"/>
+	<input type="button" id="delete" value="삭제"/>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		
+	
+		document.querySelector("#list").addEventListener("click", function(){
+			alert("dd");
+			location.href="list";			
+		});
+		
+		document.querySelector("#edit").addEventListener("click", function(){
+			let frm = document.selector('#frm')[0];
+			frm.action = "updateboard";
+			frm.submit();			
+		});
+		
+		document.querySelector("#delete").addEventListener("click", function(){
+			let frm = document.selector('#frm')[0];
+			frm.action = "deleteboard";
+			frm.submit();			
+		});
+		
+	</script>
 </div>
 
 </body>
