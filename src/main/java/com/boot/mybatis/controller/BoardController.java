@@ -54,13 +54,13 @@ public class BoardController {
 	@RequestMapping("/updateboard")
 	public String updateBoard(BoardDto boardDto) throws Exception {
 		boardService.updateBoard(boardDto);
-		return "redirect:/board/boardlist";
+		return "redirect:/board/list";
 	}
 	
 	// 게시판 삭제하기
-	@RequestMapping("/deleteBoard")
+	@RequestMapping("/deleteboard")
 	public String deleteBoard(int boardIdx) throws Exception {
 		boardService.deleteBoard(boardIdx);
-		return "redirect:/board/boardlist";
+		return "redirect:/board/list";
 	}
 }

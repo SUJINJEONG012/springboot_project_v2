@@ -46,18 +46,21 @@
 	</select>
 	
 	<update id="updateBoard" parameterType="com.boot.mybatis.dto.BoardDto">
-	
 	    update t_board
 	    set 
-	    title = #{title}, contents= #{contents}, updated_datetime = now(), updater_id = 'admin'
-	    where board_idx = #{boardIdx}
+	    title = #{title}, 
+	    contents= #{contents}, 
+	    updated_datetime = now(), 
+	    updater_id = 'admin'
+	    where 
+	    board_idx = #{boardIdx}
 	</update>
 	
-	<update id="deleteBoard" parameterType="com.boot.mybatis.dto.BoardDto">
+	<update id="deleteBoard" parameterType="int">
 		update t_board 
 		set
 		deleted_yn = 'Y',
-		updated_datetime= now(),
+		updated_datetime = now(),
 		updater_id = 'admin'
 		where 
 		board_idx = #{boardIdx}

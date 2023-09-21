@@ -10,12 +10,13 @@
 <div class="container">
 	<h2>게시글 상세 화면</h2>
 	<form id="frm" method="post">
+	
 	<table class="board_detail">
 		<colgroup>
 		 <col width="15%"/>
+		 <col width="35%"/>
 		 <col width="15%"/>
-		 <col width="15%"/>
-		 <col width="15%"/> 
+		 <col width="35%"/> 
 		</colgroup>
 		<caption>게시글 상세 내용</caption>
 		<tbody>
@@ -41,13 +42,15 @@
 			</tr>
 			
 			<tr>
-				<th scope="row">
+				<th colspan="4" scope="row" class="view_text">
 					<textarea title="내용" id="contents" name="contents" th:text="${boardDto.contents}"></textarea>
 				</th>
 			</tr>
 			
 		</tbody>
 	</table>
+	  <input type="hidden" name="boardIdx" th:value="${boardDto.boardIdx}">
+	  
 	</form>
 	
 	<input type="button" id="list" value="목록"/>
@@ -82,11 +85,13 @@
 	-->
 	 <script type="text/javascript">
             $(document).ready(function(){
+            	
                 $("#list").on("click", function(){
                     location.href = "list";
                 });
 
                 $("#edit").on("click", function(){
+                	alert("수정 클릭 ")
                     var frm = $("#frm")[0];
                     frm.action = "updateboard";
                     frm.submit();
