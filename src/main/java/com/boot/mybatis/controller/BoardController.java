@@ -1,7 +1,10 @@
 package com.boot.mybatis.controller;
 
+
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +19,18 @@ import com.boot.mybatis.service.BoardService;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	
+	//로그 설정
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
+	
 	@Autowired
 	private BoardService boardService;
 	
 	@RequestMapping("/list")
 	public ModelAndView openBoardList() throws Exception{
+		
+		log.info("log 테스트 ");
 		
 		ModelAndView mv = new ModelAndView("/board/boardlist");		
 		List<BoardDto> list = boardService.selectBoardList();
