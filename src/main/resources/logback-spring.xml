@@ -20,6 +20,7 @@
     <logger name="jdbc.resultsettable" level="INFO" appender-ref="console" />
     
     
+   
     <!-- 루트 로거 -->
     <root level="off">
         <appender-ref ref="console"/>
