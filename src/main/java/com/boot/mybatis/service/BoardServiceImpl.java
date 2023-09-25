@@ -4,15 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.boot.mybatis.dto.BoardDto;
 import com.boot.mybatis.mapper.BoardMapper;
 
 @Service
+@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	
+//	@Autowired
+//	private TransactionManager transactionManager;
+	
 	
 	@Override
 	public List<BoardDto> selectBoardList() throws Exception {		
@@ -28,6 +35,8 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDto selectBoardDetail(int boardIdx) throws Exception {
 		//조회수 증가
 		boardMapper.updateHitCount(boardIdx);
+		int i = 10 /0 ;
+		
 		// 선택된 게시글 내용 조회
 		BoardDto boardDto = boardMapper.selectBoardDetail(boardIdx);
 		return boardDto;
@@ -41,7 +50,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteBoard(int boardIdx) throws Exception {
 		boardMapper.deleteBoard(boardIdx);
-		
 	}
 
 	
