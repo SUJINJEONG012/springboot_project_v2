@@ -11,7 +11,7 @@ import com.boot.mybatis.interceptor.LoggerInterceptor;
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
-	
+	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoggerInterceptor());
 	}
