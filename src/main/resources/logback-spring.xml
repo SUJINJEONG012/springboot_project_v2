@@ -16,10 +16,8 @@
   
   	<!-- 로거 -->
    <!-- Logger -->
-    <logger name="com.*" level="DEBUG" appender-ref="console" />
-    <logger name="jdbc.sqlonly" level="INFO" appender-ref="console" />
-    <logger name="jdbc.resultsettable" level="INFO" appender-ref="console" />
-    
+    <logger name="com.*" level="debug" appender-ref="console" />
+  
     
    
     <!-- 루트 로거 -->

@@ -1,3 +1,4 @@
+
 package com.boot.mybatis.service;
 
 import java.util.Iterator;
@@ -39,16 +40,20 @@ public class BoardServiceImpl implements BoardService {
 		if(ObjectUtils.isEmpty(multipartHttpServletRequest) == false) {
 			Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 			String name;
+			
 			while(iterator.hasNext()) {
+				
 				name = iterator.next();
+				
 				log.info("File tag Name : " + name);
+				
 				List<MultipartFile> list = multipartHttpServletRequest.getFiles(name);
 				for(MultipartFile multipartFile : list) {
-					log.info("@@  Start file information");
-					log.info(" file name : " + multipartFile.getOriginalFilename());
-					log.info(" file size : " + multipartFile.getSize());
-					log.info(" file content type : " + multipartFile.getContentType() );
-					log.info("@@ End file information.\n");
+					log.debug("@@  Start file information");
+					log.debug(" file name : " + multipartFile.getOriginalFilename());
+					log.debug(" file size : " + multipartFile.getSize());
+					log.debug(" file content type : " + multipartFile.getContentType() );
+					log.debug("@@ End file information.\n");
 				}
 			}
 			

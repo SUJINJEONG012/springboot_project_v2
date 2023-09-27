@@ -13,7 +13,7 @@ public class LoggerAspect {
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
-	@Around("execution(* com.boot.mybatis.aop..Controller.*Controller.*(..)) or execution(* com.boot.mybatis.aop..servic.*Impl.*(..)) or execution(* com.boot.mybatis.aop..mapper.*Mapper.*(..))")
+	@Around("execution(* com.boot.mybatis..Controller.*Controller.*(..)) or execution(* com.boot.mybatis..service.*Impl.*(..)) or execution(* com.boot.mybatis..mapper.*Mapper.*(..))")
 	public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
 		
 		String type = "";
