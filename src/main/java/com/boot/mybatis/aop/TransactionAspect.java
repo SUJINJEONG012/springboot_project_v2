@@ -25,8 +25,10 @@ public class TransactionAspect {
 	
 	@Bean
 	public TransactionInterceptor transactionAdvice() {
+		
 		MatchAlwaysTransactionAttributeSource source = new MatchAlwaysTransactionAttributeSource();
 		RuleBasedTransactionAttribute transactionAttribute = new RuleBasedTransactionAttribute();
+		
 		transactionAttribute.setName(AOP_TRANSACTION_METHOD_NAME);
 		transactionAttribute.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(Exception.class)));
 		source.setTransactionAttribute(transactionAttribute);

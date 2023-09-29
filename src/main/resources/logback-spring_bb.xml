@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="true">
+ <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+ <encoder>
+            <Pattern>%d %5p [%c] %m%n</Pattern>
+        </encoder>
+ </appender>
+ 
+ <!-- 콘솔 Appender 설정 -->
+   <appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d %5p %m%n</Pattern>
+        </encoder>
+  </appender>
+  
+  	<!-- 로거 -->
+   <!-- Logger -->
+    <logger name="com.*" level="debug" appender-ref="console" />
+  
+    
+   
+    <!-- 루트 로거 -->
+    <root level="off">
+        <appender-ref ref="console"/>
+    </root>      
+        
+</configuration>

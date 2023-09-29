@@ -38,6 +38,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		//boardMapper.insertBoard(boardDto);
 		if(ObjectUtils.isEmpty(multipartHttpServletRequest) == false) {
+			
 			Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 			String name;
 			
@@ -45,9 +46,10 @@ public class BoardServiceImpl implements BoardService {
 				
 				name = iterator.next();
 				
-				log.info("File tag Name : " + name);
+				log.debug("File tag Name : " + name);
 				
 				List<MultipartFile> list = multipartHttpServletRequest.getFiles(name);
+				
 				for(MultipartFile multipartFile : list) {
 					log.debug("@@  Start file information");
 					log.debug(" file name : " + multipartFile.getOriginalFilename());
@@ -55,6 +57,7 @@ public class BoardServiceImpl implements BoardService {
 					log.debug(" file content type : " + multipartFile.getContentType() );
 					log.debug("@@ End file information.\n");
 				}
+				
 			}
 			
 		}

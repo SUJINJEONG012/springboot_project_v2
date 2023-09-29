@@ -21,6 +21,5 @@ public interface BoardService {
 	public void updateBoard(BoardDto boardDto) throws Exception;
 
 	public void deleteBoard(int boardIdx) throws Exception;
-	
-	
+		
 }
