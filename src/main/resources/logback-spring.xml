@@ -14,10 +14,12 @@
     </appender>
 
     <!-- 로거 -->
-    <logger name="board" level="DEBUG" appender-ref="console"/>
+    <logger name="com.boot.mybatis" level="DEBUG" appender-ref="console"/>
 
-    <!-- 루트 로거 -->
-    <root level="off">
-        <appender-ref ref="console"/>
-    </root>
+	 <!-- ADD START -->
+    <logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/>
+    <logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
+    
+
+  
 </configuration>
