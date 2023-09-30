@@ -11,6 +11,5 @@ public class SpringbootProjectV2Application {
 		SpringApplication.run(SpringbootProjectV2Application.class, args);
 	}
 	
-
 	
 }
