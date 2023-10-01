@@ -17,7 +17,7 @@
 		]]>
 	</select>
 	
-	<insert id="insertBoard" parameterType="com.boot.mybatis.dto.BoardDto">
+	<insert id="insertBoard" parameterType="com.boot.mybatis.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardIdx">
 	
 	insert into t_board(title, contents, created_datetime, created_id )
 	value
