@@ -1,10 +1,9 @@
 package com.boot.mybatis.controller;
 
 
+
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.boot.mybatis.dto.BoardDto;
 import com.boot.mybatis.service.BoardService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/board")
+@Slf4j
 public class BoardController {
 	
 	//로그 설정
-	private Logger log = LoggerFactory.getLogger(this.getClass());
-
+	//private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private BoardService boardService;
@@ -31,7 +32,7 @@ public class BoardController {
 	@RequestMapping("/list")
 	public ModelAndView openBoardList() throws Exception{
 		
-		log.info("log 테스트 ");
+		log.debug("@@@ log 테스트 ");
 		
 		ModelAndView mv = new ModelAndView("/board/boardlist");		
 		List<BoardDto> list = boardService.selectBoardList();
@@ -47,6 +48,7 @@ public class BoardController {
 	@PostMapping("/insertboard")
 	public String insertBoard(BoardDto boardDto, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		boardService.insertBoard(boardDto, multipartHttpServletRequest);
+		log.info("@@@@@ 게시판 글쓰기 ");
 		return "redirect:/board/list";
 	}
 	
@@ -59,7 +61,7 @@ public class BoardController {
 		mv.addObject("boardDto", boardDto);
 		return mv;
 	}
-	
+
 	// 게시판 수정하기
 	@RequestMapping("/updateboard")
 	public String updateBoard(BoardDto boardDto) throws Exception {
