@@ -36,7 +36,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertBoard(BoardDto boardDto, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		
-		//boardMapper.insertBoard(boardDto);
+		boardMapper.insertBoard(boardDto);
 		if(ObjectUtils.isEmpty(multipartHttpServletRequest) == false) {
 			
 			Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
