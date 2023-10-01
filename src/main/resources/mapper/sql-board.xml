@@ -25,6 +25,14 @@
 
 	</insert>
 	
+	<insert id="insertBoardFileList" parameterType="com.boot.mybatis.dto.BoardFileDto">
+	insert into t_file(board_idx, origin_file_name, stored_file_path, file_size, creator_id, created_datetime)
+	 values
+	 <foreach collection="list" item="item" separator=",">
+	(#{item.boardIdx}, #{item.})
+	</foreach>
+	</insert>
+	
 	<!-- 조회수 증가, 게시글 상세 내용 조회  -->
 	<update id="updateHitCount" parameterType="int">
 		update
