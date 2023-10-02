@@ -40,9 +40,10 @@ public class BoardServiceImpl implements BoardService {
 	public void insertBoard(BoardDto boardDto, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		
 		boardMapper.insertBoard(boardDto);
+		
 		List<BoardFileDto> list = fileUtils.parseFileInfo(boardDto.getBoardIdx(), multipartHttpServletRequest);
 		if(CollectionUtils.isEmpty(list) == false) {
-			boardMapper.insertBoardFileList(list);;
+			boardMapper.insertBoardFileList(list);
 		}
 		
 	}
