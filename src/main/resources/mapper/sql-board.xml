@@ -21,23 +21,24 @@
 	<insert id="insertBoard"
 		parameterType="com.boot.mybatis.dto.BoardDto" useGeneratedKeys="true"
 		keyProperty="boardIdx">
-
-		insert into t_board(title, contents, created_datetime, created_id )
+	    insert into t_board(title, contents, created_datetime, created_id )
 		value
 		(#{title},#{contents}, now(), 'admin')
-
 	</insert>
-
+	
 	<insert id="insertBoardFileList"
 		parameterType="com.boot.mybatis.dto.BoardFileDto">
 		insert into t_file
 		(board_idx, original_file_name, stored_file_path,
 		file_size, created_id, created_datetime)
-		values
+		value
 		<foreach collection="list" item="item" separator=",">
 			(#{item.boardIdx}, #{item.originalFileName}, #{item.storedFilePath}, #{item.fileSize}, 'admin', now())
 		</foreach>
 	</insert>
+	
+
+	
 
 	<!-- 조회수 증가, 게시글 상세 내용 조회 -->
 	<update id="updateHitCount" parameterType="int">
