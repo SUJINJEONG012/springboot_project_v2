@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boot.mybatis.mapper.BoardMapper">
 
-	<select id="selectBoardList" resultType="com.boot.mybatis.dto.BoardDto">
+	<select id="selectBoardList"
+		resultType="com.boot.mybatis.dto.BoardDto">
 		<![CDATA[
 			SELECT
 				board_idx,
@@ -16,63 +17,69 @@
 			ORDER BY board_idx desc		
 		]]>
 	</select>
-	
-	<insert id="insertBoard" parameterType="com.boot.mybatis.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardIdx">
-	
-	insert into t_board(title, contents, created_datetime, created_id )
-	value
-	(#{title},#{contents}, now(), 'admin')
+
+	<insert id="insertBoard"
+		parameterType="com.boot.mybatis.dto.BoardDto" useGeneratedKeys="true"
+		keyProperty="boardIdx">
+
+		insert into t_board(title, contents, created_datetime, created_id )
+		value
+		(#{title},#{contents}, now(), 'admin')
 
 	</insert>
-	
-	<insert id="insertBoardFileList" parameterType="com.boot.mybatis.dto.BoardFileDto">
-	insert into t_file(board_idx, origin_file_name, stored_file_path, file_size, creator_id, created_datetime)
-	 values
-	 <foreach collection="list" item="item" separator=",">
-	(#{item.boardIdx}, #{item.})
-	</foreach>
+
+	<insert id="insertBoardFileList"
+		parameterType="com.boot.mybatis.dto.BoardFileDto">
+		insert into t_file(board_idx, origin_file_name, stored_file_path,
+		file_size, creator_id, created_datetime)
+		values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.boardIdx}, #{item.originFileName}, #{item.storedFilePath}, #{item.fileSize}, 'admin', now())
+		</foreach>
 	</insert>
-	
-	<!-- 조회수 증가, 게시글 상세 내용 조회  -->
+
+	<!-- 조회수 증가, 게시글 상세 내용 조회 -->
 	<update id="updateHitCount" parameterType="int">
 		update
 		t_board
 		set
 		hit_cnt = hit_cnt + 1
 		where
-		 board_idx = #{boardIdx}
+		board_idx = #{boardIdx}
 	</update>
-	
-	<select id="selectBoardDetail" parameterType="int" resultType="com.boot.mybatis.dto.BoardDto">
-		select 
+
+	<select id="selectBoardDetail" parameterType="int"
+		resultType="com.boot.mybatis.dto.BoardDto">
+		select
 		board_idx, title, contents, hit_cnt,
 		created_datetime, created_id
 		from
-		t_board 
+		t_board
 		where
 		board_idx = #{boardIdx} AND deleted_yn = 'N'
 	</select>
-	
-	<update id="updateBoard" parameterType="com.boot.mybatis.dto.BoardDto">
-	    update t_board
-	    set 
-	    title = #{title}, 
-	    contents= #{contents}, 
-	    updated_datetime = now(), 
-	    updater_id = 'admin'
-	    where 
-	    board_idx = #{boardIdx}
+
+	<update id="updateBoard"
+		parameterType="com.boot.mybatis.dto.BoardDto">
+		update t_board
+		set
+		title = #{title},
+		contents= #{contents},
+		updated_datetime = now(),
+		updater_id = 'admin'
+		where
+		board_idx = #{boardIdx}
 	</update>
-	
+
 	<update id="deleteBoard" parameterType="int">
-		update t_board 
+		update t_board
 		set
 		deleted_yn = 'Y',
 		updated_datetime = now(),
 		updater_id = 'admin'
-		where 
+		where
 		board_idx = #{boardIdx}
 	</update>
-	
+
 
 </mapper>
