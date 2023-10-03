@@ -19,6 +19,7 @@ public interface BoardMapper {
 	public void updateBoard(BoardDto boardDto) throws Exception;
 	public void deleteBoard(int boardIdx) throws Exception;
 	
+	List<BoardFileDto> selectBoardFileList(int boardIdx) throws Exception;
 	
 	
 }
