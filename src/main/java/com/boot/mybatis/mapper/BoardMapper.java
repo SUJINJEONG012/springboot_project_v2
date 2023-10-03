@@ -11,6 +11,8 @@ import com.boot.mybatis.dto.BoardFileDto;
 public interface BoardMapper {
 
 	List<BoardDto> selectBoardList() throws Exception;
+	List<BoardFileDto> selectBoardFileList(int boardIdx) throws Exception;
+	
 	public void insertBoard(BoardDto boardDto) throws Exception;
 	public void insertBoardFileList(List<BoardFileDto> list) throws Exception;
 	public void updateHitCount(int boardIdx) throws Exception;
@@ -19,7 +21,6 @@ public interface BoardMapper {
 	public void updateBoard(BoardDto boardDto) throws Exception;
 	public void deleteBoard(int boardIdx) throws Exception;
 	
-	List<BoardFileDto> selectBoardFileList(int boardIdx) throws Exception;
 	
 	
 }
