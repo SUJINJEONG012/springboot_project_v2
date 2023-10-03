@@ -35,6 +35,19 @@
 		</foreach>
 	</insert>
 	
+	<!-- 첨부된 파일 목록 화면에서 보여주기  -->
+	<select id="selectBoardFileList" parameterType="int" resultType="com.boot.dto.BoardDto">
+	select
+	idx,
+	board_idx,
+	original_file_name,
+	format(round(file_size / 1024),0) as file_size
+	from
+	t_file
+	where
+	board_idx = #{boardIdx}
+	and delete_yn = "N"
+	</select>
 
 	
 
