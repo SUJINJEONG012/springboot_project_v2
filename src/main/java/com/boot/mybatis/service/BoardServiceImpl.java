@@ -54,6 +54,7 @@ public class BoardServiceImpl implements BoardService {
 		BoardDto boardDto = boardMapper.selectBoardDetail(boardIdx);
 		List<BoardFileDto> fileList = boardMapper.selectBoardFileList(boardIdx);
 		boardDto.setFileList(fileList);
+		
 		//조회수 증가
 		boardMapper.updateHitCount(boardIdx);
 		// 트랜잭션 테스트 하기 위해 넣은  값 int i = 10 /0 ; 
