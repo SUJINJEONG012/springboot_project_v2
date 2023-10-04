@@ -2,10 +2,16 @@ package com.boot.mybatis.controller;
 
 
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.mybatis.dto.BoardDto;
+import com.boot.mybatis.dto.BoardFileDto;
 import com.boot.mybatis.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -60,6 +67,30 @@ public class BoardController {
 		BoardDto boardDto = boardService.selectBoardDetail(boardIdx);
 		mv.addObject("boardDto", boardDto);
 		return mv;
+	}
+	
+	@RequestMapping("/downloadBoardFile")
+	public void downloadBoardFile(@RequestParam int idx, @RequestParam int boardIdx, HttpServletResponse response) throws Exception{
+		//데이터베이스에서 선택된 파일의 정보를 조회
+		BoardFileDto boardFile = boardService.selectBoardFileInformation(idx, boardIdx);
+		
+		if(ObjectUtils.isEmpty(boardFile) == false) {
+			String fileName = boardFile.getOriginalFileName();
+			
+			//메소드로 조회된 파일의 정보 중 stroedFilePath값을 이용해 실제 저장되어 있는 파일을 읽어온 후 byte[]형태로 변환
+			byte[] files = FileUtils.readFileToByteArray(new File(boardFile.getStoredFilePath()));
+			
+			
+			response.setContentType("application/octet-stream");
+			response.setContentLength(files.length);
+			//파일은 반드시 utf-8로 인코딩
+			response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(fileName, "UTF-8")+"\";");
+			
+			response.getOutputStream().write(files);
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+			
+		}
 	}
 
 	// 게시판 수정하기

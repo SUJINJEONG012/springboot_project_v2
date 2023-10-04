@@ -50,16 +50,15 @@
 	
 	<!-- 파일정보를 추가 하는 쿼리 추가 -->
 	
-	<select id="selectBoardFileInformation" parameterType="map" resultType="com.boot.mybatis.dto.BoardFileDto">
-	
-	select 
+	<select id="selectBoardFileInformation" parameterType="map" resultType="com.boot.mybatis.dto.BoardFileDto">	
+	select
 	original_file_name,
 	stored_file_path,
 	file_size
 	from 
 	t_file
 	where 
-	idx = #{idx} AND board_idx = {boardIdx} AND delete_yn="N"
+	idx = #{idx} AND board_idx = {boardIdx} AND delete_yn='N'
 	</select>
 	
 
