@@ -15,8 +15,7 @@ public class BoardDto {
 	private String createdId;
 	private LocalDateTime createdDateTime;
 	private String updaterId;
-	private LocalDateTime updatedDateTime;
-	
+	private LocalDateTime updatedDateTime;	
 	private List<BoardFileDto> fileList;
 	
 }
