@@ -59,7 +59,7 @@
 	from 
 	t_file
 	where 
-	idx=#{idx} AND board_idx = {boardIdx} AND delete_yn="N"
+	idx = #{idx} AND board_idx = {boardIdx} AND delete_yn="N"
 	</select>
 	
 

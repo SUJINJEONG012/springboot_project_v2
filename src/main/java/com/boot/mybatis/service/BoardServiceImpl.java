@@ -61,6 +61,13 @@ public class BoardServiceImpl implements BoardService {
 				
 		return boardDto;
 	}
+	
+	@Override
+	public BoardFileDto selectBoardFileInformation(int idx, int boardIdx) throws Exception {
+		
+		return boardMapper.selectBoardFileInformation(idx, boardIdx);
+	}
+
 
 	@Override
 	public void updateBoard(BoardDto boardDto) throws Exception {
@@ -72,5 +79,6 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.deleteBoard(boardIdx);
 	}
 
+	
 	
 }
