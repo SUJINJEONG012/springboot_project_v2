@@ -55,7 +55,7 @@
 	
 	<div class="file_list">
 	<!-- Thymeleaf에서는 기호를 사용해 변수와 고정된 문자열을 혼합하여 출력 -->
-		<a th:each="list : ${boardDto.fileList}" th:href="@{/board/downloadBoardFile(idx=${list.idx}, boardIdx = ${list.boardIdx})}" th:text="|${list.originalFileName}(${list.fileSize} kb)|"></a>
+		<a th:each="list : ${boardDto.fileList}" th:href="@{/board/downloadBoardFile(idx=${list.idx},boardIdx=${list.boardIdx})}" th:text="|${list.originalFileName}(${list.fileSize} kb)|"></a>
 	</div>
 	
 	<input type="button" id="list" value="목록"/>
