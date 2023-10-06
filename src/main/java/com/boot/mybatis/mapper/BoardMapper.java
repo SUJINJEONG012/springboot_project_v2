@@ -22,7 +22,7 @@ public interface BoardMapper {
 	
 	public void updateBoard(BoardDto boardDto) throws Exception;
 	public void deleteBoard(int boardIdx) throws Exception;
-	
+	public void deleteBoardFile(@Param("idx") int idx, @Param("boardIdx") int boardIdx);
 	
 	
 }

@@ -93,17 +93,24 @@ public class BoardController {
 		}
 	}
 
-	// 게시판 수정하기
+	// 게시물 수정하기
 	@RequestMapping("/updateboard")
 	public String updateBoard(BoardDto boardDto) throws Exception {
 		boardService.updateBoard(boardDto);
 		return "redirect:/board/list";
 	}
 	
-	// 게시판 삭제하기
+	// 게시물 삭제하기
 	@RequestMapping("/deleteboard")
 	public String deleteBoard(int boardIdx) throws Exception {
 		boardService.deleteBoard(boardIdx);
 		return "redirect:/board/list";
 	}
+	
+	@RequestMapping("/deleteBoardFile")
+	public String deleteBoardFile(@RequestParam int idx, @RequestParam int boardIdx) throws Exception {
+		boardService.deleteBoardFile(idx, boardIdx);
+		return "redirect:/board/boarddetail?boardIdx="+boardIdx;
+	}
+	
 }

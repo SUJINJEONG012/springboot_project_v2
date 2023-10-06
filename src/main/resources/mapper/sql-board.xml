@@ -108,6 +108,19 @@
 		where
 		board_idx = #{boardIdx}
 	</update>
+	
+	
+	<update id="deleteBoardFile" parameterType="map">
+		update
+		t_file
+		set
+		deleted_yn = "Y",
+		updated_datetime = now(),
+		updater_id = 'admin'
+		where 
+		idx = #{idx}
+		and board_idx = #{boardIdx}
+	</update>
 
 
 </mapper>

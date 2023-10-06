@@ -2,6 +2,7 @@ package com.boot.mybatis.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.boot.mybatis.dto.BoardDto;
@@ -24,4 +25,6 @@ public interface BoardService {
 
 	public void deleteBoard(int boardIdx) throws Exception;
 		
+	//첨부파일 삭제
+	public void deleteBoardFile(@Param("inx") int idx, @Param("boardIdx") int boardIdx);
 }

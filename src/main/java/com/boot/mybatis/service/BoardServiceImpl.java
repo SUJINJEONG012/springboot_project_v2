@@ -78,6 +78,12 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.deleteBoard(boardIdx);
 	}
 
+	@Override
+	public void deleteBoardFile(int idx, int boardIdx) {
+		boardMapper.deleteBoardFile(idx, boardIdx);;
+
+	}
+
 	
 	
 }
