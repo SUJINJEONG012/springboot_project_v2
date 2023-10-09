@@ -8,7 +8,9 @@
 <body>
 
 <div class="container">
+
 	<h2>게시글 상세 화면</h2>
+
 	<form id="frm" method="post">
 	
 	<table class="board_detail">
@@ -49,14 +51,16 @@
 			
 		</tbody>
 	</table>
-	  <input type="hidden" name="boardIdx" th:value="${boardDto.boardIdx}">
+	  <input type="hidden" name="_method" id="method">
 	  
 	</form>
 	
 	<div class="file_list" th:each="list : ${boardDto.fileList}">
 	<!-- Thymeleaf에서는 기호를 사용해 변수와 고정된 문자열을 혼합하여 출력 -->
-		<a style="float:left" th:href="@{/board/downloadBoardFile(idx=${list.idx},boardIdx=${list.boardIdx})}" th:text="|${list.originalFileName}(${list.fileSize} kb)|"></a>
-		<input type="button" id="delete_file" th:value="파일삭제" th:onclick="|location.href='@{/board/deleteBoardFile(idx=${list.idx}, boardIdx=${list.boardIdx})}'|">
+		<a style="float:left" th:href="@{/board/file(idx=${list.idx},boardIdx=${list.boardIdx})}" th:text="|${list.originalFileName}(${list.fileSize} kb)|"></a>
+		<form th:method="delete" th:action="@{/board/file(idx=${list.idx}, boardIdx=${list.boardIdx})}">
+		<input type="submit" id="delete_file" th:value="파일삭제" >
+		</form>
 	</div>
 	
 	<input type="button" id="list" value="목록"/>
@@ -104,8 +108,9 @@
                 });
 
                 $("#delete").on("click", function(){
+                	$("input:hidden[name=_method]").val("delete");
                     var frm = $("#frm")[0];
-                    frm.action = "deleteboard";
+                    frm.action = "/board/"+$("input:hidden[name=boardIdx]").val();
                     frm.submit();
                 });
             })
